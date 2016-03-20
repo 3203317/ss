@@ -1,6 +1,10 @@
 package net.foreworld.rvt.controller;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpSession;
+
+import net.foreworld.rvt.model.User;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,15 +26,13 @@ public class DefaultController {
 
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public ModelAndView indexUI(HttpSession session) {
-		Object obj = session.getAttribute("session.user");
-		if (null == obj) {
-			return new ModelAndView("redirect:/user/login");
-		} // END
 		ModelAndView result = new ModelAndView(index_ftl);
 		// TODO
-		result.addObject("data_session_user", obj);
-		result.addObject("data_session_time",
-				session.getAttribute("session.time"));
+		User user = new User();
+		user.setUser_name("admin");
+
+		result.addObject("data_session_user", user);
+		result.addObject("data_session_time", new Date());
 		return result;
 	}
 
