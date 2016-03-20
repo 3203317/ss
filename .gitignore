@@ -34,3 +34,11 @@ node_modules
 
 
 *.swp
+
+*/target/
+
+*.bak
+
+**/webapp/logs/*.*
+**/WEB-INF/classes/**
+**/WEB-INF/classes/**/*.*
