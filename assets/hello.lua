@@ -11,15 +11,16 @@ ngx.say('</br>');
 ngx.say('-----------');
 ngx.say('</br>');
 
-local tenant = ngx.shared.tenant;
 
-ngx.say(tenant:get('alias_test001'));
-ngx.say('</br>');
-ngx.say(tenant:get('upstream_portal_test002'));
-ngx.say('</br>');
+--if nil == tenant:get('alias_test003') then
+--    ngx.say('no');
+--else
+--    ngx.say('yes');
+--end
 
-if nil == tenant:get('alias_test003') then
-    ngx.say('no');
-else
-    ngx.say('yes');
-end
+
+local urlswitcher = require 'urlswitcher';
+
+ngx.say(urlswitcher.getCluster());
+ngx.say('</br>');
+ngx.say(urlswitcher.getAlias());

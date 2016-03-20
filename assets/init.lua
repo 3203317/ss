@@ -11,4 +11,3 @@ local tenant = ngx.shared.tenant;
 for key, value in pairs(data) do
     tenant:set(key, value);
 end
-
