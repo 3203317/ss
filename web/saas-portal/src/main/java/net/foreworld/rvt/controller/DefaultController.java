@@ -2,6 +2,7 @@ package net.foreworld.rvt.controller;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -25,14 +26,13 @@ public class DefaultController {
 
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public ModelAndView indexUI(
-			@RequestParam(required = true) String __tenant_name__,
 			@RequestParam(required = false) String user_name,
-			HttpSession session) {
+			HttpSession session, HttpServletRequest req) {
 		ModelAndView result = new ModelAndView(index_ftl);
 		// TODO
 		result.addObject("data_session_user", user_name);
 		result.addObject("data_session_time", new Date());
-		result.addObject("data_tenant_name", __tenant_name__);
+		result.addObject("data_tenant_name", req.getHeader("Tenant-Alias"));
 		// TODO
 		return result;
 	}
