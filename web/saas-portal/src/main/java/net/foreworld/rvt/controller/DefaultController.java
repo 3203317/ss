@@ -4,8 +4,6 @@ import java.util.Date;
 
 import javax.servlet.http.HttpSession;
 
-import net.foreworld.rvt.model.User;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,12 +26,10 @@ public class DefaultController {
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public ModelAndView indexUI(
 			@RequestParam(required = true) String __tenant_name__,
-			HttpSession session) {
+			@RequestParam(required = true) String user_name, HttpSession session) {
 		ModelAndView result = new ModelAndView(index_ftl);
 		// TODO
-		User user = new User();
-		user.setUser_name("huangxin");
-		result.addObject("data_session_user", user);
+		result.addObject("data_session_user", user_name);
 		result.addObject("data_session_time", new Date());
 		result.addObject("data_tenant_name", __tenant_name__);
 		// TODO
