@@ -11,14 +11,6 @@ ngx.say('</br>');
 ngx.say('-----------');
 ngx.say('</br>');
 
-
---if nil == tenant:get('alias_test003') then
---    ngx.say('no');
---else
---    ngx.say('yes');
---end
-
-
 local urlswitcher = require 'urlswitcher';
 
 ngx.say(urlswitcher.getCluster());

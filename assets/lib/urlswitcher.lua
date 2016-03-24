@@ -6,11 +6,11 @@ local var = ngx.var;
 local tenant = ngx.shared.tenant;
 
 function _m.getCluster()
-    return tenant:get('upstream_'.. var.service_name  ..'_'.. var.tenant_name);
+    return tenant:get('upstream_'.. var.__service_name__  ..'_'.. var.__tenant_name__);
 end;
 
 function _m.getAlias()
-    return tenant:get('alias_'.. var.tenant_name);
+    return tenant:get('alias_'.. var.__tenant_name__);
 end;
 
 return _m;
