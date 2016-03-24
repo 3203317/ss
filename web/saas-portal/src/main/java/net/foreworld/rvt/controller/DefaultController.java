@@ -9,6 +9,7 @@ import net.foreworld.rvt.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -25,14 +26,17 @@ public class DefaultController {
 	private String welcome_ftl = "default/1.0.2/welcome";
 
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
-	public ModelAndView indexUI(HttpSession session) {
+	public ModelAndView indexUI(
+			@RequestParam(required = true) String __tenant_name__,
+			HttpSession session) {
 		ModelAndView result = new ModelAndView(index_ftl);
 		// TODO
 		User user = new User();
 		user.setUser_name("huangxin");
-
 		result.addObject("data_session_user", user);
 		result.addObject("data_session_time", new Date());
+		result.addObject("data_tenant_name", __tenant_name__);
+		// TODO
 		return result;
 	}
 
