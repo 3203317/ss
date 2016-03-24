@@ -26,7 +26,8 @@ public class DefaultController {
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public ModelAndView indexUI(
 			@RequestParam(required = true) String __tenant_name__,
-			@RequestParam(required = true) String user_name, HttpSession session) {
+			@RequestParam(required = false) String user_name,
+			HttpSession session) {
 		ModelAndView result = new ModelAndView(index_ftl);
 		// TODO
 		result.addObject("data_session_user", user_name);
