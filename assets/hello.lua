@@ -2,9 +2,9 @@
 
 local var = ngx.var;
 
-ngx.say('service_name: ', var.service_name);
+ngx.say('service_name: ', var.__service_name__);
 ngx.say('</br>');
-ngx.say('tenant_name: ', var.tenant_name);
+ngx.say('tenant_name: ', var.__tenant_name__);
 ngx.say('</br>');
 
 
